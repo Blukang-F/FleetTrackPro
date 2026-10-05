@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_medium"
+    app:cardBackgroundColor="@color/surface"
+    app:cardCornerRadius="@dimen/radius_card"
+    app:cardElevation="@dimen/elevation_card"
+    app:strokeColor="@color/divider"
+    app:strokeWidth="@dimen/stroke_card">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spacing_medium">
+
+        <TextView
+            android:id="@+id/textTrackingNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="monospace"
+            android:maxLines="1"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_size_title_small"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/badgeStatus"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="EXP-90021-JKT" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/badgeStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/radius_badge"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/textTrackingNumber"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textTrackingNumber">
+
+            <TextView
+                android:id="@+id/textStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/spacing_small"
+                android:paddingTop="@dimen/spacing_xsmall"
+                android:paddingEnd="@dimen/spacing_small"
+                android:paddingBottom="@dimen/spacing_xsmall"
+                android:textSize="@dimen/text_size_caption"
+                android:textStyle="bold"
+                tools:text="Menunggu" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textRecipientName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_size_body"
+            app:layout_constraintEnd_toStartOf="@id/textCodAmount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textTrackingNumber"
+            tools:text="Ibu Ratna Dewi" />
+
+        <TextView
+            android:id="@+id/textCodAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:textColor="@color/color_accent"
+            android:textSize="@dimen/text_size_body"
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@id/textRecipientName"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Rp 125.000" />
+
+        <TextView
+            android:id="@+id/textRecipientPhone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xsmall"
+            android:drawablePadding="@dimen/spacing_xsmall"
+            android:gravity="center_vertical"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_size_caption"
+            app:drawableStartCompat="@drawable/ic_phone"
+            app:drawableTint="@color/text_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textRecipientName"
+            tools:text="081234567890" />
+
+        <TextView
+            android:id="@+id/textAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xsmall"
+            android:drawablePadding="@dimen/spacing_xsmall"
+            android:gravity="center_vertical"
+            android:maxLines="3"
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_size_caption"
+            app:drawableStartCompat="@drawable/ic_location"
+            app:drawableTint="@color/text_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textRecipientPhone"
+            tools:text="Jl. Melati Raya No. 45, Harjamukti, Cirebon" />
+
+        <TextView
+            android:id="@+id/textSyncState"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:textSize="@dimen/text_size_caption"
+            app:layout_constraintEnd_toStartOf="@id/buttonDeliver"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textAddress"
+            tools:text="Tersinkron dengan server" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonDeliver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:minWidth="@dimen/button_min_width"
+            android:text="@string/action_deliver"
+            android:textSize="@dimen/text_size_caption"
+            app:cornerRadius="@dimen/radius_button"
+            app:layout_constraintBottom_toBottomOf="@id/textSyncState"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textSyncState"
+            tools:text="Terkirim" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

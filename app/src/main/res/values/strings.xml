@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FleetTrackPro</string>
+    <string name="subtitle_manifest">Manifest pengiriman hari ini</string>
+    <string name="search_hint">Cari resi, nama, atau alamat</string>
+
+    <string name="action_deliver">Terkirim</string>
+    <string name="action_delivered_done">Selesai</string>
+    <string name="action_retry">Coba lagi</string>
+    <string name="action_retry_sync">Sinkronkan</string>
+
+    <string name="status_pending">Menunggu</string>
+    <string name="status_in_delivery">Diantar</string>
+    <string name="status_delivered">Selesai</string>
+    <string name="status_failed">Gagal</string>
+
+    <string name="sync_done">Tersinkron dengan server</string>
+    <string name="sync_pending">Belum tersinkron, akan dikirim nanti</string>
+
+    <string name="empty_manifest">Belum ada paket pada manifest hari ini.</string>
+    <string name="empty_search_result">Paket tidak ditemukan.</string>
+
+    <string name="sync_started">Mengirim perubahan ke server…</string>
+    <string name="sync_finished">Sinkronisasi selesai, %1$d perubahan tersisa.</string>
+
+    <string name="cd_mark_delivered">Tandai paket %1$s sebagai terkirim</string>
+    <string name="cd_empty_manifest">Ilustrasi paket kosong</string>
+
+    <plurals name="pending_sync_message">
+        <item quantity="one">%1$d perubahan menunggu sinkronisasi</item>
+        <item quantity="other">%1$d perubahan menunggu sinkronisasi</item>
+    </plurals>
+</resources>

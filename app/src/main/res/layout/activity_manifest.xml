@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_primary"
+        app:elevation="@dimen/elevation_app_bar">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/color_primary"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/spacing_large"
+            android:paddingEnd="@dimen/spacing_large"
+            android:paddingBottom="@dimen/spacing_medium"
+            android:text="@string/subtitle_manifest"
+            android:textColor="@color/white_70"
+            android:textSize="@dimen/text_size_subtitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchInputLayout"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_large"
+            android:layout_marginEnd="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_medium"
+            android:hint="@string/search_hint"
+            app:boxBackgroundColor="@color/white"
+            app:boxCornerRadiusBottomEnd="@dimen/radius_card"
+            app:boxCornerRadiusBottomStart="@dimen/radius_card"
+            app:boxCornerRadiusTopEnd="@dimen/radius_card"
+            app:boxCornerRadiusTopStart="@dimen/radius_card"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/text_secondary"
+            app:startIconDrawable="@drawable/ic_search"
+            app:startIconTint="@color/text_secondary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_size_body" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/pendingSyncBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/status_warning_soft"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/spacing_large"
+            android:paddingTop="@dimen/spacing_small"
+            android:paddingEnd="@dimen/spacing_small"
+            android:paddingBottom="@dimen/spacing_small"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/textPendingSync"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="@dimen/spacing_small"
+                android:gravity="center_vertical"
+                android:textColor="@color/status_warning"
+                android:textSize="@dimen/text_size_caption"
+                tools:text="2 perubahan menunggu sinkronisasi" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonRetrySync"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:text="@string/action_retry_sync"
+                android:textColor="@color/status_warning"
+                app:icon="@drawable/ic_sync"
+                app:iconTint="@color/status_warning" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerOrders"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingStart="@dimen/spacing_medium"
+                android:paddingTop="@dimen/spacing_medium"
+                android:paddingEnd="@dimen/spacing_medium"
+                android:paddingBottom="@dimen/spacing_large"
+                android:scrollbars="vertical"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_delivery_order" />
+
+            <ProgressBar
+                android:id="@+id/progressInitial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/stateEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_large"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <ImageView
+                    android:layout_width="@dimen/icon_empty_size"
+                    android:layout_height="@dimen/icon_empty_size"
+                    android:contentDescription="@string/cd_empty_manifest"
+                    android:src="@drawable/ic_empty_box"
+                    app:tint="@color/text_disabled" />
+
+                <TextView
+                    android:id="@+id/textEmpty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:gravity="center"
+                    android:text="@string/empty_manifest"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="@dimen/text_size_body" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/stateError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_large"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <TextView
+                    android:id="@+id/textError"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/status_failed"
+                    android:textSize="@dimen/text_size_body"
+                    tools:text="Gagal memuat manifest." />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonRetry"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    android:text="@string/action_retry" />
+
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
